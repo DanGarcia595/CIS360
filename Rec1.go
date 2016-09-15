@@ -25,14 +25,13 @@ func mList(m int, narray []int) []int {
 	var temp int
 	var compareVar int
 	var i int
-	var j int
 	for i = m; i < len(narray); i++ {
 		compareVar = narray[i]
-		for j = 0; j < m; j++ {
-			if compareVar < finalArray[j] {
+		for index, element := range finalArray {
+			if compareVar < element {
 				temp = compareVar
-				compareVar = finalArray[j]
-				finalArray[j] = temp
+				compareVar = finalArray[index]
+				finalArray[index] = temp
 			}
 		}
 	}
