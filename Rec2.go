@@ -2,19 +2,29 @@ package main
 
 import (
 	"fmt"
-	"math"
+	//	"math"
 	"time"
 )
 
 func main() {
-	myArray := [7]int{10, 30, 40, 50, 60, 65, 70}
-	for _, element := range myArray {
+
+	/*	myArray := [7]int{10, 30, 40, 50, 60, 65, 70}
+		for _, element := range myArray {
+			start := time.Now()
+			fib1(element)
+			elapsed := time.Since(start)
+			fmt.Println(element, " took: ", elapsed)
+			fmt.Println("T/2^(n/2): ", float64(elapsed)/math.Pow(2, float64(element/2)))
+		}*/
+	myArray2 := [7]int{50, 100, 1000, 10000, 50000, 10000000}
+	for _, element := range myArray2 {
 		start := time.Now()
-		fib(element)
+		fib2(element)
 		elapsed := time.Since(start)
 		fmt.Println(element, " took: ", elapsed)
-		fmt.Println("T/2^(n/2): ", float64(elapsed)/math.Pow(2, float64(element/2)))
+		fmt.Println("T/n: ", float64(elapsed)/float64(element))
 	}
+
 }
 
 func Subsets(array []int) {
@@ -46,11 +56,24 @@ func SmallestLargest(array []int) {
 
 }
 
-func fib(num int) int {
+func fib1(num int) int {
 	if num <= 1 {
 		return num
 	} else {
-		return fib(num-1) + fib(num-2)
+		return fib1(num-1) + fib1(num-2)
 	}
 
+}
+
+func fib2(n int) int {
+	f := make([]int, n+1)
+
+	f[0] = 0
+	if n > 0 {
+		f[1] = 1
+		for i := 2; i <= n; i++ {
+			f[i] = f[i-1] + f[i-2]
+		}
+	}
+	return f[n]
 }
