@@ -3,15 +3,27 @@ package main
 import (
 	"fmt"
 	"math"
-	"strconv"
+	//	"strconv"
 )
 
 func main() {
-	//	myarray := []int{0, 8, 5, 4, 5, 6}
-	//	fmt.Println(DivConqMax(myarray))
-	/*num := 17
+	fmt.Println("Divide and Conquer Algorithm for Max Value:")
+	myarray := []int{0, 8, 3, 4, 5, 6}
+	fmt.Println(DivConqMax(myarray))
+
+	num := 5
 	fmt.Println("Num ", num)
-	fmt.Println(Div3Conq(num, myarray))*/
+	fmt.Println(Div3Conq(num, myarray))
+
+	fmt.Println("\nTower of hanoi 5")
+	NewTowerOfHanoi(5)
+	SimulateGame()
+	count = 0
+	fmt.Println("Tower of hanoi 8")
+	NewTowerOfHanoi(8)
+	SimulateGame()
+	count = 0
+	fmt.Println("Tower of hanoi 10")
 	NewTowerOfHanoi(10)
 	SimulateGame()
 
@@ -90,7 +102,7 @@ var count float64
 
 func SimulateGame() {
 	recur = math.Exp2(float64(len(*(SourcePeg)))) - 1
-	fmt.Println("Order of the algorithm" + strconv.Itoa(int(recur)))
+	//fmt.Println("Order of the algorithm" + strconv.Itoa(int(recur)))
 	hanoi(len(*(SourcePeg)), SourcePeg, HelperPeg, TargetPeg)
 	fmt.Println("Total moves: ", count)
 }
@@ -115,8 +127,8 @@ func hanoi(n int, source *[]int, helper *[]int, target *[]int) {
 			disk := (*source)[len(*source)-1]
 			*source = (*source)[:(len(*source) - 1)]
 			*target = append((*target), disk)
-			fmt.Println("target")
-			fmt.Println(*target)
+			//fmt.Println("target")
+			//fmt.Println(*target)
 		}
 		hanoi(n-1, helper, source, target)
 	}
