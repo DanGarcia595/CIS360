@@ -7,6 +7,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 )
 
 type graph struct {
@@ -68,7 +69,7 @@ func (g *graph) dijkstra(source int) (map[int]int, []string) {
 
 	// Create map to track distances from source vertex
 	var u int
-	path := make([]string, 11)
+	path := make([]string, 16)
 	dist := make(map[int]int)
 
 	// Distance from source to source is zero
@@ -122,14 +123,19 @@ func main() {
 	g.nodes = make(map[int]struct{})
 
 	log.Println("Loading graph...")
-	g.load("Ex2.txt")
+	g.load("g3.txt")
 
 	source := 5
 	destinations := []int{1, 2, 3, 4, 7, 8, 9, 10}
+
+	start := time.Now()
 	distances, path := g.dijkstra(source)
+	elapsed := time.Since(start)
 
 	for _, destination := range destinations {
 		fmt.Print("The path from V", source, " to V", destination, " is: ", path[destination], "V", destination, "\n")
 		fmt.Print("The cost from V", source, " to V", destination, " is: ", distances[destination], "\n")
 	}
+
+	fmt.Print("Time to calculate dijkstra for V", source, ": ", elapsed, "\n")
 }

@@ -6,9 +6,9 @@ import (
 )
 
 func main() {
-	array := []int{1, 4, 15, 20}
+	array := []int{1, 5, 10, 25}
 	fmt.Println(array)
-	fmt.Println(mincoin(23, array))
+	fmt.Println(mincoin(78, array))
 
 }
 
