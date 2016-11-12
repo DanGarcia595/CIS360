@@ -43,7 +43,7 @@ func (q *Stack) Len() int {
 }
 
 func main() {
-	exp := "123*+56/-"
+	exp := "123+-"
 	fmt.Println("exp is: " + exp)
 	myTree := postfixToTree(exp)
 	fmt.Println("Tree: " + myTree.String())
