@@ -1,6 +1,8 @@
 package main
 
 import "fmt"
+import "math/rand"
+import "time"
 
 type MaxHeap struct {
 	slice    []int
@@ -52,9 +54,16 @@ func heapSort(slice []int) []int {
 }
 
 func main() {
-	s := []int{142, 543, 123, 65, 453, 879, 572, 434, 111, 242, 811, 102}
+	s1 := rand.NewSource(time.Now().UnixNano())
+	r1 := rand.New(s1)
+	s := make([]int, 20)
+	for index, _ := range s {
+		s[index] = r1.Intn(400)
+	}
+	fmt.Println("Randomly generated array:")
+	fmt.Println(s)
 	h := BuildMaxHeap(s)
-	fmt.Println("Inital Heap: ")
+	fmt.Println("\nInital Heap: ")
 	fmt.Println(h.slice, "\n")
 
 	s = heapSort(s)
