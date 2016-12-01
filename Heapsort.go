@@ -40,12 +40,13 @@ func heapSort(slice []int) []int {
 	for i := len(h.slice) - 1; i >= 1; i-- {
 		h.slice[0], h.slice[i] = h.slice[i], h.slice[0]
 		h.heapSize--
+		h.MaxHeapify(0)
 		if i == len(h.slice)-1 || i == len(h.slice)-3 || i == len(h.slice)-5 {
 			element := (i - len(h.slice)) * -1
 			fmt.Println("Heap after removing ", element, " elements")
 			fmt.Println(h.slice)
+
 		}
-		h.MaxHeapify(0)
 	}
 	return h.slice
 }
